@@ -1,28 +1,6 @@
-
-// const usuario = {
-//     id: "1234",
-//     nombre: "Juan",
-//     correo: "juan@example.com"
-//   };
-  
-//   // Convertir el objeto usuario a una cadena JSON para almacenamiento
-//   sessionStorage.setItem('usuario', JSON.stringify(usuario));
-  
-//   // Recuperar el objeto usuario de localStorage y convertirlo de nuevo a un objeto JavaScript
-//   const usuarioAlmacenado = JSON.parse(sessionStorage.getItem('usuario'));
-  
-//   console.log(usuarioAlmacenado);
-
-// let alumnos = []
-
-// function ingresaralumno () {
-//     const input = document.getElementById('name')
-//     alumnos.push('name')
-
-// }
-// console.log(alumnos)
-// let boton = document.getElementById('btn')
-// boton.addEventListener("click",ingresaralumno)
+let titulo = document.createElement('h1');
+titulo.innerHTML = '<h1>Titulo</h1>';
+document.body.insertBefore(titulo, document.body.childNodes[0]);
 
 let alumnos = [];
 
@@ -35,22 +13,13 @@ function ingresaralumno() {
         return;
     }
     alumnos.push(nombre);
-    
-    // limpiar input
+    /*limpiar input*/
     input.value = '';
     actualizarLista();
 }
-function ingresarcal() {
-    const input = document.getElementById('cal');
-    const calificacion = parseInt(input.value);
-    
-    if (isNaN(calificacion) || calificacion < 0 || calificacion > 100) {
-        alert('Por favor ingrese una calificación válida (0-100)');
-        return;
-    }
-}
+
 function actualizarLista() {
-    const lista = crearListaElement();
+    const lista = nuevoalumnolista();
     lista.innerHTML = '';
     
     alumnos.forEach(alumno => {
@@ -60,7 +29,7 @@ function actualizarLista() {
     });
 }
 
-function crearListaElement() {
+function nuevoalumnolista() {
     const lista = document.createElement('ul');
     lista.id = 'lista-alumnos';
     document.body.appendChild(lista);
@@ -70,5 +39,4 @@ function crearListaElement() {
 let boton = document.getElementById('btn');
 boton.addEventListener("click", ingresaralumno);
 
-// Mostrar lista inicial
 actualizarLista();
