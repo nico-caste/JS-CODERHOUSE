@@ -1,5 +1,5 @@
 let titulo = document.createElement('h1');
-titulo.innerHTML = '<h1>Titulo</h1>';
+titulo.innerHTML = '<h1>Calificaciones</h1>';
 document.body.insertBefore(titulo, document.body.childNodes[0]);
 
 let alumnos = [];
@@ -8,20 +8,20 @@ function ingresaralumno() {
     let inputn = document.getElementById('name');
     let nombre = inputn.value.trim ();
     
-    if (nombre === '') {
+    if (nombre === '' || !isNaN(nombre)) {
         alert('Por favor ingrese un nombre correcto');
         return;
     }
     
     let inputc = document.getElementById('cal');
     let calificacion = parseInt(inputc.value);
-    if (calificacion < 0 || calificacion > 10) {
-        alert (`por favor, ingrese una calificacion correcta`);
+    if (calificacion < 0 || calificacion > 10 || isNaN(calificacion)) {
+        alert (`por favor, ingrese una calificacion correcta (0 a 10)`);
         return;
     }
-    alumnos.push (nombre + calificacion);
+    alumnos.push (nombre + ` = ` + calificacion);
     inputc.value = ``;
-    inputn.value = '';
+    inputn.value = ``;
     actualizarlista();
 
 }
